@@ -7,4 +7,7 @@ router.route('/')
 .get(markerController.getMarkers)
 .post(markerController.createMarkers)
 
+router.route('/:id')
+.get(markerController.getMarker)
+
 module.exports = router

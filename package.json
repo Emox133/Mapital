@@ -7,7 +7,7 @@
     "node:dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "IT TECH",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

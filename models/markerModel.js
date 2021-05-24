@@ -8,6 +8,14 @@ const markerSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Molimo vas unesite kategoriju događaja.']
         // enum: ['Infrastrukturni problem', 'Saobraćajna nezgoda', 'Opasne lokacije']
+    },
+    description: {
+        type: String,
+        required: [true, 'Molimo vas unesite detalje događaja.']
+    },
+    image: {
+        type: String,
+        default: ''
     }
 })
 
