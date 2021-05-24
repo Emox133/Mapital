@@ -14,8 +14,7 @@ const markerSchema = new mongoose.Schema({
         required: [true, 'Molimo vas unesite detalje događaja.']
     },
     image: {
-        type: String,
-        default: ''
+        type: String
     }
 })
 
