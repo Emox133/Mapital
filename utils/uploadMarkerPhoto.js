@@ -1,9 +1,9 @@
 const AppError = require('./appError');
 const cloudinary = require('cloudinary').v2
 
-exports.uploadMarkerPhoto = req => {
+exports.uploadProfileImage = req => {
     const ext = req.files.photo.mimetype.split('/')[1];
-    const filename = `user-${Date.now()}-${new Date().getTime() * 1000}.${ext}`;
+    const filename = `user-${new Date()}-${new Date().getTime() * 1000}.${ext}`;
     
     if (!req.files.photo.mimetype.startsWith('image')) {
         return next(new AppError('Invalid file type. Please upload only images.', 400))
@@ -12,10 +12,10 @@ exports.uploadMarkerPhoto = req => {
         return next(new AppError('Please provide an image type with jpg or png file extension.', 400));
     } 
 
-    let temp = req.files.photo.tempFilePath.split('\\')
+    let temp = req.files.photo.tempFilePath.split('/')
     let index = temp.length - 1;
     temp.splice(index, 1, req.files.filename)
-    let joinedTemp = temp.join('\\')
+    let joinedTemp = temp.join('/')
 
     req.files.photo.mv(joinedTemp +filename, (err) => {
         if(err) console.log(err)
@@ -24,7 +24,6 @@ exports.uploadMarkerPhoto = req => {
     req.files.filename = filename
     req.files.joinedTemp = joinedTemp + filename
 }
-
 
 
 // exports.uploadMarkerPhoto = req => {
@@ -38,10 +37,10 @@ exports.uploadMarkerPhoto = req => {
 //         return next(new AppError('Please provide an image type with jpg or png file extension.', 400));
 //     } 
 
-//     let temp = req.files.photo.tempFilePath.split('/')
+//     let temp = req.files.photo.tempFilePath.split('\\')
 //     let index = temp.length - 1;
 //     temp.splice(index, 1, req.files.filename)
-//     let joinedTemp = temp.join('/')
+//     let joinedTemp = temp.join('\\')
 
 //     req.files.photo.mv(joinedTemp +filename, (err) => {
 //         if(err) console.log(err)
