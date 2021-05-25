@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const markerSchema = new mongoose.Schema({
     latLng: {
-        type: [Number]
+        type: [Number],
+        required: [true, 'Molimo vas unesite kordinate markera.']
     },
     category: {
         type: String,
@@ -14,7 +15,8 @@ const markerSchema = new mongoose.Schema({
         required: [true, 'Molimo vas unesite detalje događaja.']
     },
     image: {
-        type: String
+        type: String,
+        default: 'https://res.cloudinary.com/dajcztbmt/image/upload/v1621880539/Infrastrukturni_Problem_tnsgg0.png'
     }
 })
 

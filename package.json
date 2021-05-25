@@ -10,9 +10,11 @@
   "author": "IT TECH",
   "license": "ISC",
   "dependencies": {
+    "cloudinary": "^1.25.1",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "mongoose": "^5.12.4"
   },
   "devDependencies": {

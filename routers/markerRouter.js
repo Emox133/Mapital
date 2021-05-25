@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route('/')
 .get(markerController.getMarkers)
-.post(markerController.createMarkers)
+.post(markerController.checkForPhoto, markerController.createMarkers)
 
 router.route('/:id')
 .get(markerController.getMarker)

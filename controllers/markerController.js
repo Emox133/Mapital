@@ -1,18 +1,35 @@
 const catchAsync = require('./../utils/catchAsync') 
 const Marker = require('./../models/markerModel') 
+const {uploadMarkerPhoto} = require('../utils/uploadMarkerPhoto')
+const cloudinary = require('cloudinary').v2
+
+exports.checkForPhoto = catchAsync(async (req, res, next) => {
+    if(req.files) {
+        uploadMarkerPhoto(req)
+        await cloudinary.uploader.upload(req.files.joinedTemp, (err, img) => {
+            if(img) {
+                // console.log(img)
+                req.files.image = img.secure_url
+            }
+            if(err) {
+                console.log(err)
+            }
+        })
+    }
+    next()
+})
 
 exports.createMarkers = catchAsync(async(req, res, next) => {
-    const newMarker = {
-        latLng: req.body.latLng,
+    const newMarker = await Marker.create({
+        latLng: [Number.parseFloat(req.body.latLng.split(',')[0]), Number.parseFloat(req.body.latLng.split(',')[1])],
         category: req.body.category,
-        description: req.body.description
-    }
+        description: req.body.description,
+        image: req.files ? req.files.image : req.body.image
+    })
 
-    const marker = await Marker.create(newMarker)
-    
     res.status(201).json({
         message: 'success',
-        marker
+        newMarker
     })
 })
 
