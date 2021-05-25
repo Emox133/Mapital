@@ -1,7 +1,7 @@
 const AppError = require('./appError');
 const cloudinary = require('cloudinary').v2
 
-exports.uploadProfileImage = req => {
+exports.uploadMarkerPhoto = req => {
     const ext = req.files.photo.mimetype.split('/')[1];
     const filename = `user-${new Date()}-${new Date().getTime() * 1000}.${ext}`;
     
