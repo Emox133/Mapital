@@ -6,6 +6,7 @@ const rectangleRouter = require('./routers/rectangleRouter')
 const polylineRouter = require('./routers/polylineRouter')
 const polygonRotuer = require('./routers/polygonRouter')
 const markerRouter = require('./routers/markerRouter')
+const userRouter = require('./routers/userRouter')
 const globalErrorHandler = require('./controllers/errorController')
 const os = require('os')
 const fileupload = require('express-fileupload')
@@ -27,6 +28,7 @@ app.use('/api/v1/polygons', polygonRotuer)
 app.use('/api/v1/rectangles', rectangleRouter)
 app.use('/api/v1/circles', circleRouter)
 app.use('/api/v1/markers', markerRouter)
+app.use('/api/v1/users', userRouter)
 
 //* All routes that do not exist
 app.all('*', (req, res, next) => {
