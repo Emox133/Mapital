@@ -6,6 +6,10 @@ const markerSchema = new mongoose.Schema({
         type: [Number],
         required: [true, 'Molimo vas unesite kordinate markera.']
     },
+    name: {
+        type: String,
+        default: 'Pošiljaoc je želio ostati anoniman.'
+    },
     email: {
         type: String,
         default: 'mapital.development750@gmail.com'
@@ -17,7 +21,6 @@ const markerSchema = new mongoose.Schema({
     category: {
         type: String,
         required: [true, 'Molimo vas unesite kategoriju događaja.']
-        // enum: ['Infrastrukturni problem', 'Saobraćajna nezgoda', 'Opasne lokacije']
     },
     description: {
         type: String,

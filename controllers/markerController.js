@@ -23,6 +23,7 @@ exports.checkForPhoto = catchAsync(async (req, res, next) => {
 exports.createMarkers = catchAsync(async(req, res, next) => {
     const newMarker = await Marker.create({
         latLng: [Number.parseFloat(req.body.latLng.split(',')[0]), Number.parseFloat(req.body.latLng.split(',')[1])],
+        name: req.body.name,
         category: req.body.category,
         sender: req.body.sender,
         description: req.body.description,

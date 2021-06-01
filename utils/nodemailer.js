@@ -24,7 +24,7 @@ class Email {
             from: this.from,
             to: this.to,
             subject,
-            text: `Opis: ${this.event.description} Pošiljaoc: ${this.event.sender} Fotografija: ${this.event.image ? this.event.image : 'Pošiljaoc nije dodao fotografiju.'}`
+            text: `Opis: ${this.event.description ? this.event.description : 'Pošiljaoc je želio ostati anoniman.'} Šalje: ${this.event.sender ? this.event.sender : 'Pošiljaoc je želio ostati anoniman.'} Fotografija: ${this.event.image ? this.event.image : 'Pošiljaoc nije dodao fotografiju.'}`
         }
 
         await this.newTransport().sendMail(emailOptions, (err, info) => {
