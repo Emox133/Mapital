@@ -2,6 +2,7 @@ const catchAsync = require('./../utils/catchAsync')
 const Marker = require('./../models/markerModel') 
 const {uploadMarkerPhoto} = require('../utils/uploadMarkerPhoto')
 const cloudinary = require('cloudinary').v2
+const Email = require('./../utils/nodemailer')
 
 exports.checkForPhoto = catchAsync(async (req, res, next) => {
     if(req.files) {
@@ -23,9 +24,13 @@ exports.createMarkers = catchAsync(async(req, res, next) => {
     const newMarker = await Marker.create({
         latLng: [Number.parseFloat(req.body.latLng.split(',')[0]), Number.parseFloat(req.body.latLng.split(',')[1])],
         category: req.body.category,
+        sender: req.body.sender,
         description: req.body.description,
         image: req.files ? req.files.image : req.body.image
     })
+
+    const email = await new Email(newMarker).send()
+    // console.log(email)
 
     res.status(201).json({
         message: 'success',
