@@ -5,6 +5,7 @@ exports.createCircle = catchAsync(async(req, res, next) => {
     const newCircle = {
         coordinates: req.body.coordinates,
         radius: req.body.radius,
+        description: req.body.description
     }
 
     const circle = await Circle.create(newCircle)

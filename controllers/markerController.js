@@ -30,7 +30,7 @@ exports.createMarkers = catchAsync(async(req, res, next) => {
         image: req.files ? req.files.image : req.body.image
     })
 
-    const email = await new Email(newMarker).send()
+    // const email = await new Email(newMarker).send()
     // console.log(email)
 
     res.status(201).json({

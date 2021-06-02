@@ -8,6 +8,10 @@ const circleSchema = new mongoose.Schema({
     radius: {
         type: Number,
         required: [true, 'Molimo vas unesite radius kruga.']
+    },
+    description: {
+        type: String,
+        required: [true, 'Molimo vas unesite detalje unosa.']
     }
 })
 
