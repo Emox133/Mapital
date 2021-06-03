@@ -9,6 +9,9 @@ router.route('/signup')
 router.route('/login')
 .post(authController.login)
 
+// ADMINSTRATOR ROUTES ONLY
+router.use(authController.protectRoutes)
+router.use(authController.restrictTo('admin'))
 router.route('/')
 .get(userController.getAllUsers)
 

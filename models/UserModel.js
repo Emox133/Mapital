@@ -11,6 +11,10 @@ const usersSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Molimo vas unesite vaše prezime.']
     },
+    role: {
+        type: String,
+        default: 'user'
+    },
     email: {
         type: String,
         required: [true, 'Molimo vas unesite vaš E-mail.'],
