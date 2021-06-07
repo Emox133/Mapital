@@ -12,6 +12,11 @@ const circleSchema = new mongoose.Schema({
     description: {
         type: String,
         required: [true, 'Molimo vas unesite detalje unosa.']
+    },
+    image: {
+        type: String,
+        default: 'https://res.cloudinary.com/dajcztbmt/image/upload/v1622551947/Infrastrukturni_Problem_qxymgr.png',
+        required: [true, 'Molimo vas unesite fotografiju koja odgovara odabranom mjestu.']
     }
 })
 

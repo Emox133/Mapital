@@ -3,9 +3,10 @@ const Circle = require('./../models/circleModel')
 
 exports.createCircle = catchAsync(async(req, res, next) => {
     const newCircle = {
-        coordinates: req.body.coordinates,
+        coordinates: [Number.parseFloat(req.body.coordinates.split(',')[0]), Number.parseFloat(req.body.coordinates.split(',')[1])],
         radius: req.body.radius,
-        description: req.body.description
+        description: req.body.description,
+        image: req.files ? req.files.image : req.body.image
     }
 
     const circle = await Circle.create(newCircle)
