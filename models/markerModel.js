@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const markerSchema = new mongoose.Schema({
+    creator: {
+        type: mongosose.Schema.ObjectId
+    },
     latLng: {
         type: [Number],
         required: [true, 'Molimo vas unesite kordinate markera.']

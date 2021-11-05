@@ -9,5 +9,6 @@ router.route('/')
 
 router.route('/:id')
 .get(markerController.getMarker)
+.patch(markerController.updateMarker)
 
 module.exports = router

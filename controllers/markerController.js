@@ -3,6 +3,7 @@ const Marker = require('./../models/markerModel')
 const {uploadMarkerPhoto} = require('../utils/uploadMarkerPhoto')
 const cloudinary = require('cloudinary').v2
 const Email = require('./../utils/nodemailer')
+const AppError = require('../utils/appError')
 
 exports.checkForPhoto = catchAsync(async (req, res, next) => {
     if(req.files) {
@@ -55,4 +56,14 @@ exports.getMarker = catchAsync(async(req, res, next) => {
         message: 'success',
         marker
     })
+})
+
+exports.updateMarker = catchAsync(async(req, res, next) => {
+    const updatedMarker = await Marker.findOneAndUpdate({_id: req.params.id, })
+
+    if(!updatedMarker) {
+        return next(new AppError('Marker neuspješno ažuriran...'))
+    }
+
+
 })
